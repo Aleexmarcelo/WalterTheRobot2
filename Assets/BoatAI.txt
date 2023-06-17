@@ -1,0 +1,23 @@
+tree("Root2")
+	parallel
+		repeat mute tree("Patrol")
+		repeat mute tree("Dead")
+tree("patrol")
+	fallback
+		tree("Attack")
+			fallback
+				tree("Wander")
+tree("attack")
+	while IsVisible_Enemy
+		sequence
+			SetTarget_Enemy
+			SetTarget_EnemyLastSeenPosition
+			Acquire_Enemy
+tree("morrer")
+	sequence
+		IsHealthLessThan(0.1)
+		Explode
+tree("andar")
+	sequence
+		PickRandomDestination
+		MoveToDestination
